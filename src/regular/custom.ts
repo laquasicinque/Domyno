@@ -76,3 +76,15 @@ export function* takeWhile<T>(iter: Iterable<T>, boolFunc: hofFunc<T, boolean>):
 		yield item;
 	}
 }
+
+export function head<T>(iter:Iterable<T>): T {
+	return iter[Symbol.iterator]().next().value
+}
+
+export function tail<T>(iter:Iterable<T>): T {
+	let output
+	for(const item of iter) {
+		output = item
+	}
+	return output
+}

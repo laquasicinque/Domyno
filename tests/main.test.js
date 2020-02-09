@@ -5,7 +5,9 @@ const {
 	flat,
 	chain,
 	iterableFromNested,
-  filter,
+	filter,
+	head,
+	tail,
   reduce,
 } = require('../build/bundle.js');
 
@@ -17,7 +19,7 @@ const {
 // 		const newArr1 = arr.map(n => n ** 2).filter(n => n < 10)
 // 		console.log(newArr1)
 // 		const time1 = Date.now() - now;
-		
+
 // 		now = Date.now();
 // 		const newArr2 = filter(map(arr, n => n ** 2), n => n < 10)
 // 		console.log([...newArr2])
@@ -122,7 +124,7 @@ describe('map, filter, and reduce', () => {
 
 		expect(res).toStrictEqual(expected);
   });
-  
+
 	test('basic filter', () => {
     const arr = [1, 2, 3, 4, 5]
 
@@ -132,7 +134,7 @@ describe('map, filter, and reduce', () => {
 
 		expect(res).toStrictEqual(expected);
 	});
-  
+
 	test('basic reduce', () => {
     const arr = [1, 2, 3, 4, 5]
 
@@ -143,3 +145,21 @@ describe('map, filter, and reduce', () => {
 		expect(res).toStrictEqual(expected);
 	});
 });
+
+describe('head and tails', () => {
+
+	test('head returns first item', () => {
+		const arr = [{},{},{},{}]
+		const res = head(arr)
+		const expected = arr[0]
+		expect(res).toBe(expected)
+	})
+
+
+	test('tail returns last item', () => {
+		const arr = [{},{},{},{}]
+		const res = tail(arr)
+		const expected = arr[3]
+		expect(res).toBe(expected)
+	})
+})

@@ -151,6 +151,16 @@ function* takeWhile(iter, boolFunc) {
         yield item;
     }
 }
+function head(iter) {
+    return iter[Symbol.iterator]().next().value;
+}
+function tail(iter) {
+    let output;
+    for (const item of iter) {
+        output = item;
+    }
+    return output;
+}
 
 function pipeSome(func) {
     return (iter) => some(iter, func);
@@ -203,6 +213,7 @@ exports.filter = filter;
 exports.find = find;
 exports.flat = flat;
 exports.flatMap = flatMap;
+exports.head = head;
 exports.iterableFromNested = iterableFromNested;
 exports.map = map;
 exports.pipe = pipe;
@@ -220,6 +231,7 @@ exports.pipeTakeWhile = pipeTakeWhile;
 exports.reduce = reduce;
 exports.slice = slice;
 exports.some = some;
+exports.tail = tail;
 exports.take = take;
 exports.takeWhile = takeWhile;
 exports.zip = zip;
